@@ -8,13 +8,17 @@ from openai import OpenAI
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app)  # 允许所有域名跨域（开发用）
+
+# 添加健康检查路由
+@app.route('/health')
+def health():
+    return jsonify({"status": "ok", "message": "Backend is running"})
 
 client = OpenAI(
     api_key=os.getenv("DASHSCOPE_API_KEY"),
     base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
 )
-
 
 @app.route("/api/chat", methods=["POST"])
 def chat():
@@ -40,7 +44,7 @@ def chat():
         print("调用千问失败：", repr(e))
         return jsonify({"reply": "后端调用模型失败，请看 Flask 终端报错"}), 500
 
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0",port=port, debug=True)
+    # 生产环境必须 debug=False
+    app.run(host="0.0.0.0", port=port, debug=False)
