@@ -8,7 +8,11 @@ from openai import OpenAI
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # 允许所有域名跨域（开发用）
+CORS(app,
+     origins="*",  # 允许所有来源（测试用）
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization"],
+     supports_credentials=False) # 允许所有域名跨域（开发用）
 
 # 添加健康检查路由
 @app.route('/health')
