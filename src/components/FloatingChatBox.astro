@@ -1,0 +1,129 @@
+<div class="chat-widget">
+	<button class="chat-button" id="chatButton" aria-label="打开聊天框">
+		💬
+	</button>
+
+	<div class="chat-panel" id="chatPanel">
+		<div class="chat-window" id="chatWindow">
+			<p>机器人：你好，我是一个小对话窗口 👋</p>
+		</div>
+
+		<input
+			class="chat-input"
+			id="chatInput"
+			type="text"
+			placeholder="请输入内容..."
+		/>
+	</div>
+</div>
+
+<script>
+	const chatButton = document.getElementById('chatButton');
+	const chatPanel = document.getElementById('chatPanel');
+	const input = document.getElementById('chatInput');
+	const chatWindow = document.getElementById('chatWindow');
+
+	chatButton?.addEventListener('click', () => {
+		chatPanel?.classList.toggle('open');
+	});
+
+	input?.addEventListener('keydown', async (event) => {
+		if (event.key !== 'Enter') return;
+
+		const text = input.value.trim();
+		if (!text) return;
+
+		const userMsg = document.createElement('p');
+		userMsg.textContent = `我：${text}`;
+		chatWindow?.appendChild(userMsg);
+
+		input.value = '';
+
+		const botMsg = document.createElement('p');
+		botMsg.textContent = '机器人：思考中...';
+		chatWindow?.appendChild(botMsg);
+
+		try {
+			const response = await fetch('http://127.0.0.1:5000/api/chat', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ message: text }),
+			});
+
+			const data = await response.json();
+
+			botMsg.textContent = `机器人：${data.reply}`;
+			chatWindow.scrollTop = chatWindow.scrollHeight;
+		} catch (error) {
+			botMsg.textContent = '机器人：请求失败';
+			console.error(error);
+		}
+	});
+</script>
+
+<style>
+	.chat-widget {
+		position: fixed;
+		left: 20px;
+		bottom: 40px;
+		z-index: 999;
+		display: flex;
+		align-items: flex-end;
+		gap: 12px;
+	}
+
+	.chat-button {
+		width: 48px;
+		height: 48px;
+		border: none;
+		border-radius: 50%;
+		background: #2563eb;
+		color: white;
+		font-size: 22px;
+		cursor: pointer;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	}
+
+	.chat-panel {
+		display: none;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.chat-panel.open {
+		display: flex;
+	}
+
+	.chat-window {
+		width: 220px;
+		height: 200px;
+		overflow-y: auto;
+		padding: 12px;
+		border-radius: 12px;
+		background: white;
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+		font-size: 14px;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.chat-window p {
+		margin: 0;
+	}
+
+	.chat-input {
+		width: 220px;
+		padding: 10px 12px;
+		border: 1px solid #ddd;
+		border-radius: 999px;
+		outline: none;
+		font-size: 14px;
+	}
+
+	.chat-input:focus {
+		border-color: #2563eb;
+	}
+</style>
