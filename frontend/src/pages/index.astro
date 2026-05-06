@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<main class="home">
+		<section class="hero">
+			<p class="eyebrow">Personal Tech Blog & Engineering Portfolio</p>
+			<h1>🧑‍🚀 你好，我是金圣崎</h1>
+			<p class="intro">
+				一个正在构建个人技术博客与工程作品集的开发者，专注于 AI 应用、后端工程与产品化落地。
+			</p>
+
+			<div class="actions">
+				<a class="button primary" href="/blog">阅读博客</a>
+				<a class="button secondary" href="https://github.com/">查看 GitHub</a>
+			</div>
+		</section>
+
+		<section class="section">
+			<h2>我正在构建什么</h2>
+			<ul class="cards">
+				<li>
+					<h3>技术博客</h3>
+					<p>记录 Astro、前端基础、AI 应用架构和工程实践。</p>
+				</li>
+				<li>
+					<h3>工程作品集</h3>
+					<p>展示可以运行、可以部署、可以解释技术取舍的项目。</p>
+				</li>
+				<li>
+					<h3>AI 应用能力</h3>
+					<p>围绕 LLM、RAG、Agent、后端 API 和产品闭环做系统化积累。</p>
+				</li>
+			</ul>
+		</section>
+	</main>
+
+	<style>
+		.home {
+			width: min(960px, calc(100% - 2rem));
+			margin: 0 auto;
+			padding: 4rem 0;
+		}
+
+		.hero {
+			padding: 4rem 0;
+		}
+
+		.eyebrow {
+			margin: 0 0 1rem;
+			color: rgb(var(--gray));
+			font-size: 0.9rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		h1 {
+			margin: 0;
+			font-size: clamp(2.4rem, 6vw, 4.5rem);
+			line-height: 1.05;
+		}
+
+		.intro {
+			max-width: 680px;
+			margin: 1.5rem 0 0;
+			color: rgb(var(--gray-dark));
+			font-size: 1.25rem;
+			line-height: 1.8;
+		}
+
+		.actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			margin-top: 2rem;
+		}
+
+		.button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 999px;
+			padding: 0.75rem 1.1rem;
+			text-decoration: none;
+			font-weight: 700;
+		}
+
+		.primary {
+			background: rgb(var(--black));
+			color: white;
+		}
+
+		.secondary {
+			border: 1px solid rgb(var(--gray-light));
+			color: rgb(var(--gray-dark));
+		}
+
+		.section {
+			padding: 2rem 0;
+		}
+
+		.section h2 {
+			margin-bottom: 1rem;
+			font-size: 1.8rem;
+		}
+
+		.cards {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 1rem;
+			padding: 0;
+			list-style: none;
+		}
+
+		.cards li {
+			padding: 1.25rem;
+			border: 1px solid rgb(var(--gray-light));
+			border-radius: 16px;
+			box-shadow: var(--box-shadow);
+		}
+
+		.cards h3 {
+			margin: 0 0 0.5rem;
+		}
+
+		.cards p {
+			margin: 0;
+			color: rgb(var(--gray));
+			line-height: 1.7;
+		}
+	</style>
+</BaseLayout>

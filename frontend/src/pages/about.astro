@@ -1,0 +1,87 @@
+---
+import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+import Layout from '../layouts/BlogPost.astro';
+---
+
+<Layout
+   title="关于我"
+   description="金圣崎 —— 大模型应用开发者，专注 AI 应用架构与工程化落地。"
+   pubDate={new Date('May 06 2026')}
+   heroImage={AboutHeroImage}
+>
+   <p>
+      你好，我是金圣崎。
+   </p>
+
+   <p>
+      这里是我的个人技术博客与工程作品集。我的目标方向是 <strong>大模型应用开发 / AI 应用架构师</strong>
+      —— 不是模型训练，不是底层算法，而是<strong>把 LLM 能力转化为可部署、可维护、可解释的产品系统</strong>。
+   </p>
+
+   <h2>我在做什么</h2>
+
+   <p>
+      围绕 LLM 应用展开系统化积累，关注以下方向：
+   </p>
+
+   <ul>
+      <li><strong>LLM 应用架构</strong>：Prompt 工程、上下文管理、多轮对话状态、token 与成本控制</li>
+      <li><strong>RAG 系统</strong>：向量检索、知识库工程化、文档切分策略、混合检索与 reranking</li>
+      <li><strong>Agent 与工具调用</strong>：function calling、ReAct、多 Agent 协作、长任务可靠性</li>
+      <li><strong>后端工程</strong>：API 设计、流式响应、并发控制、可观测性</li>
+      <li><strong>产品化落地</strong>：从 demo 到上线的完整闭环，包括评估、监控、迭代</li>
+   </ul>
+
+   <h2>我的工作哲学</h2>
+
+   <p>
+      <strong>追求底层逻辑而非表面 API 调用</strong>。
+      调用一个 LLM API 五行代码就能跑，但理解为什么这样设计、瓶颈在哪、如何在生产环境保证可靠性，
+      需要架构级视角。我相信对一个技术只有讲清楚它"在系统里位于哪一层"，才算真的懂。
+   </p>
+
+   <p>
+      <strong>工程落地优先于花哨技巧</strong>。
+      AI 圈最不缺的是 demo，最缺的是能上线、能稳定运行、能持续迭代的系统。
+      我更关心一个方案能不能交付，而不是它在论文里多新颖。
+   </p>
+
+   <p>
+      <strong>对幻觉零容忍</strong>。
+      不论是 LLM 输出还是工程师自己的判断，"我大概记得"和"我有证据"是两件完全不同的事。
+      不确定的事直接说不确定，比硬编一个看似合理的答案重要得多。
+   </p>
+
+   <h2>这个博客记录什么</h2>
+
+   <p>
+      博客是我对外的"工程笔记本"，主要写三类内容：
+   </p>
+
+   <ul>
+      <li><strong>架构拆解</strong>：把 LLM 应用、RAG、Agent 系统拆到底层逻辑层面</li>
+      <li><strong>实战记录</strong>：项目从 0 到 1 的过程，包括踩坑、取舍、回顾</li>
+      <li><strong>基础积累</strong>：前端、后端、工程实践等横向技术沉淀</li>
+   </ul>
+
+   <h2>关于我</h2>
+
+   <ul>
+      <li>姓名：金圣崎</li>
+      <li>当前位置：[占位：城市/国家]</li>
+      <li>当前阶段：[占位：例如"在读 / 在职 / 求职 / 自由职业"]</li>
+      <li>背景：[占位：例如"X 年后端经验，Y 年起接触 LLM 应用"]</li>
+   </ul>
+
+   <h2>联系方式</h2>
+
+   <ul>
+      <li>GitHub：[占位：你的 GitHub 链接]</li>
+      <li>Email：[占位：你的邮箱]</li>
+      <li>[可选] Twitter / X：[占位]</li>
+   </ul>
+
+   <p>
+      如果你正在做 AI 应用相关的事情，或者对我的内容有任何反馈、合作、求职机会，欢迎联系。
+   </p>
+</Layout>
